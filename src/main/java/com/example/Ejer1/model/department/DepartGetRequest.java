@@ -1,14 +1,15 @@
 package com.example.Ejer1.model.department;
 
-public class DepartDAO {
+public class DepartGetRequest {
 
 	private int id;
     private String name;
     private String city;
     
-    public DepartDAO() {}
+    public DepartGetRequest() {};
     
-	public DepartDAO(int id, String name, String city) {
+	public DepartGetRequest(int id, String name, String city) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.city = city;
@@ -40,7 +41,7 @@ public class DepartDAO {
 
 	@Override
 	public String toString() {
-		return "DepartDAO [id=" + id + ", name=" + name + ", city=" + city + "]";
+		return "DepartGetRequest [id=" + id + ", name=" + name + ", city=" + city + "]";
 	}
-	  
+    
 }

@@ -1,6 +1,6 @@
 package com.example.Ejer1.model.employee;
 
-public class EmployeeDAO {
+public class EmployeeGetRequest {
 
 	private int id;
 	private String name;
@@ -9,9 +9,10 @@ public class EmployeeDAO {
 	private Integer bossId;
 	private Integer departmentId;
 	
-	public EmployeeDAO() {};
-	
-	public EmployeeDAO(int id, String name, String position, Integer salary, Integer bossId, Integer departmentId) {
+	public EmployeeGetRequest() {}
+
+	public EmployeeGetRequest(int id, String name, String position, Integer salary, Integer bossId,
+			Integer departmentId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -67,6 +68,12 @@ public class EmployeeDAO {
 
 	public void setDepartmentId(Integer departmentId) {
 		this.departmentId = departmentId;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeGetRequest [id=" + id + ", name=" + name + ", position=" + position + ", salary=" + salary
+				+ ", bossId=" + bossId + ", departmentId=" + departmentId + "]";
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.example.Ejer1.repository;
+package com.example.Ejer1.repository.department;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.Ejer1.model.Depart;
+import com.example.Ejer1.model.department.DepartDAO;
 
 @Repository
 public class DepartRepositoryImpl implements DepartRepository{
@@ -17,11 +17,11 @@ public class DepartRepositoryImpl implements DepartRepository{
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public List<Depart> findAll() {
+	public List<DepartDAO> findAll() {
 
 		try {
 
-			return jdbcTemplate.query("SELECT * from departments", BeanPropertyRowMapper.newInstance(Depart.class));
+			return jdbcTemplate.query("SELECT * from departments", BeanPropertyRowMapper.newInstance(DepartDAO.class));
 
 		}catch (IncorrectResultSizeDataAccessException e) {
 
@@ -32,16 +32,16 @@ public class DepartRepositoryImpl implements DepartRepository{
 	}
 
 	@Override
-	public Depart findById(int id) {
+	public DepartDAO findById(int id) {
 		return jdbcTemplate.queryForObject(
 				"SELECT * FROM departments where ID = ?",
-				BeanPropertyRowMapper.newInstance(Depart.class),
+				BeanPropertyRowMapper.newInstance(DepartDAO.class),
 				id
 				);
 	}
 
 	@Override
-	public int create(Depart depart) {
+	public int create(DepartDAO depart) {
 		return jdbcTemplate.update(
 				"INSERT INTO departments ( name, city ) VALUES(?, ?)",
 				new Object[] { depart.getName(), depart.getCity()}
@@ -49,7 +49,7 @@ public class DepartRepositoryImpl implements DepartRepository{
 	}
 
 	@Override
-	public int update(Depart depart) {
+	public int update(DepartDAO depart) {
 		return jdbcTemplate.update("UPDATE departments SET name = ?, city = ? WHERE id = ?",
 				new Object[] { depart.getName(), depart.getCity() , depart.getId()}
 				);
